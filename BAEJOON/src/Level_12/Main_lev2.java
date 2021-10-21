@@ -15,10 +15,10 @@ public class Main_lev2 {
 
 	static void merageSort(int start, int end) {
 		if (start < end) {// 한개가 남을 때까지 쪼개기
-		int mid = (start + end) / 2;
-		merageSort(start, mid);// 앞부분
-		merageSort(mid + 1, end);// 뒷부분
-		merage(start, mid, end);
+			int mid = (start + end) / 2;
+			merageSort(start, mid);// 앞부분
+			merageSort(mid + 1, end);// 뒷부분
+			merage(start, mid, end);
 		}
 	}
 
@@ -39,13 +39,14 @@ public class Main_lev2 {
 		while (left <= mid) {// 왼쪽 남은 값 넣기
 			sorted[k] = arr[left];
 			left++;
+			k++;
 		}
 		while (right <= end) {// 오른쪽 남은 값 넣기
 			sorted[k] = arr[right];
 			right++;
 			k++;
 		}
-		for (int i = 0; i <= end; i++) {// 임시 배열 내용 arr에 덮어 씌우기
+		for (int i = start; i <= end; i++) {// 임시 배열 내용 arr에 덮어 씌우기
 			arr[i] = sorted[i];
 		}
 	}
