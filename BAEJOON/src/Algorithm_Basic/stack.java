@@ -15,6 +15,7 @@ public class stack {
 		Stack<Integer> stack = new Stack<>();
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+		StringBuilder sb = new StringBuilder();
 		int num = Integer.parseInt(br.readLine());
 		for (int i = 0; i < num; i++) {
 			StringTokenizer st = new StringTokenizer(br.readLine(), " ");
@@ -22,14 +23,15 @@ public class stack {
 			if (input.equals("push"))
 				stack.push(Integer.parseInt(st.nextToken()));
 			else if (input.equals("pop"))
-				bw.write((stack.empty() ? "-1" : stack.pop()) + "\n");
+				sb.append((stack.empty() ? "-1" : stack.pop()) + "\n");
 			else if (input.equals("size"))
-				bw.write(stack.size() + "\n");
+				sb.append(stack.size() + "\n");
 			else if (input.equals("empty"))
-				bw.write((stack.empty() ? "1" : "0") + "\n");
+				sb.append((stack.empty() ? "1" : "0") + "\n");
 			else if (input.equals("top"))
-				bw.write((stack.empty() ? "-1" : stack.peek()) + "\n");
+				sb.append((stack.empty() ? "-1" : stack.peek()) + "\n");
 		}
+		bw.write(String.valueOf(sb));
 		bw.flush();
 		br.close();
 		bw.close();
