@@ -58,6 +58,8 @@ public class editor {
 			bw.write(s + "");
 		}
 		bw.flush();
+		bw.close();
+		br.close();
 	}
 
 }
