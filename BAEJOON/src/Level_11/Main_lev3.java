@@ -13,7 +13,6 @@ public class Main_lev3 {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		int num = Integer.parseInt(br.readLine());
 		int[][] arr = new int[num][2];
-		int[] result = new int[num];
 		for (int i = 0; i < num; i++) {
 			String str[] = br.readLine().split(" ");
 			arr[i][0] = Integer.parseInt(str[0]);
