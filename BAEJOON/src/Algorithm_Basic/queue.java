@@ -17,7 +17,7 @@ public class queue {
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 		StringBuilder sb = new StringBuilder();
 		int num = Integer.parseInt(br.readLine());
-		Queue<Integer> que = new LinkedList();
+		Queue<Integer> que = new LinkedList<Integer>();
 		int rear = 0;
 		for (int i = 0; i < num; i++) {
 			StringTokenizer st = new StringTokenizer(br.readLine());
