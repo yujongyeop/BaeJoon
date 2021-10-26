@@ -30,7 +30,7 @@ public class iron_stick {
 					stack.push(1);
 					i += 1;
 				}
-			} else {// ')'가 나왔을때	
+			} else {// ')'가 나왔을때
 				stack.pop();
 				num_stick += 1;
 				i += 1;
