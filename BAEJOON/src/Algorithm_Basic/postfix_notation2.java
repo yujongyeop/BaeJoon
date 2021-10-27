@@ -5,8 +5,6 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Stack;
 
 public class postfix_notation2 {
@@ -15,11 +13,9 @@ public class postfix_notation2 {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 		StringBuilder sb = new StringBuilder();
-		Map<Character, Integer> map = new HashMap<>();
 		Stack<Double> stack = new Stack<Double>();
 		int num = Integer.parseInt(br.readLine());
 		String formula = br.readLine();
-		int seq = 0;
 		int[] input = new int[num];
 		for (int i = 0; i < num; i++)
 			input[i] = Integer.parseInt(br.readLine());
@@ -27,11 +23,8 @@ public class postfix_notation2 {
 		for (int i = 0; i < formula.length(); i++) {
 			char c = formula.charAt(i);
 			if (c >= 65 && c <= 90) {
-				if (!map.containsKey(c)) {
-					map.put(c, seq);
-					seq++;
-				}
-				stack.push((double) input[map.get(c)]);
+				int a = c - 'A';
+				stack.push((double) input[a]);
 				continue;
 			}
 			switch (c) {
