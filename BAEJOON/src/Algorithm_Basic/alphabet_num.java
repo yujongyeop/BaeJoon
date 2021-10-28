@@ -1,5 +1,6 @@
 package Algorithm_Basic;
 
+// https://www.acmicpc.net/problem/10820
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
