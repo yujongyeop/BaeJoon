@@ -8,15 +8,22 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 
 public class factorial {
+	static int fact(int num) {
+		int result = num;
+		if (num != 0) {
+			num--;
+			result *= fact(num);
+		} else {
+			return 1;
+		}
+		return result;
+	}
 
 	public static void main(String[] args) throws NumberFormatException, IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 		int input = Integer.parseInt(br.readLine());
-		int factorial = 1;
-		for (int i = input; i > 0; i--)
-			factorial *= i;
-		bw.write(Integer.toString(factorial));
+		bw.write(Integer.toString(fact(input)));
 		bw.flush();
 		bw.close();
 		br.close();
