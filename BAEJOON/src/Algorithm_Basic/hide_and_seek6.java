@@ -24,8 +24,8 @@ public class hide_and_seek6 {
 			x[i] = Math.abs(Integer.parseInt(pos[i]) - S);
 		int ans = x[0];
 		for (int i = 1; i < num; i++) {
-			ans = gcd(ans, x[i]);// 가장 작은 수와 최소 공배수를 구함
-			// 사실 이 부분이 잘 이해가 안되네요
+			ans = gcd(ans, x[i]);// 가장 작은 수와 최소 공배수를 구하고 그 최소 공배수를 ans에 저장
+			// ex) gcd(a,b,c) = gcd(gcd(a,b),c)
 		}
 		bw.write(Integer.toString(ans));
 		bw.flush();
