@@ -8,24 +8,31 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 
 public class oct_to_bin {
+	static StringBuilder sb = new StringBuilder();
+
+	static void to_binary(int num, int div_num) {
+		if (div_num > 0) {
+			if (num / div_num == 0 && sb.length() != 0) {
+				sb.append(0);
+			} else if (num / div_num != 0) {
+				sb.append(1);
+			}
+			num %= div_num;
+			div_num /= 2;
+			to_binary(num, div_num);// 재귀 호출
+		} else if (num == 0 && sb.length() == 0) {
+			sb.append(0);
+		} else
+			return;
+	}
+
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-		StringBuilder sb = new StringBuilder();
 		String oct = br.readLine();
 		for (int i = 0; i < oct.length(); i++) {
 			int num = oct.charAt(i) - '0';
-			int sum = 0;
-			sum += (num / 4) * 100;
-			if (sum == 0 && i != 0)// 좀 더 소스를 잘 짤 수 있는 부분이라 추후에 수정 예정
-				sb.append(0);
-			num %= 4;
-			sum += (num / 2) * 10;
-			if (sum == 0 && i != 0)
-				sb.append(0);
-			num %= 2;
-			sum += num;
-			sb.append(sum);
+			to_binary(num, 4);
 		}
 		bw.write(String.valueOf(sb));
 		bw.close();
