@@ -24,7 +24,7 @@ public class succession {
 				max = i;
 		for (int i = 1; i < num; i++) {
 			DP[i] = Math.max(DP[i - 1] + input[i], input[i]);
-			if(DP[i]>max)
+			if (DP[i] > max)
 				max = DP[i];
 		}
 		bw.write(Integer.toString(max));
