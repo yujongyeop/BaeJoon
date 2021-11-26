@@ -41,8 +41,8 @@ public class next_Permutation {
 			i -= 1;
 		if (i <= 0)// arr이 내림차순일 경우 다음 순열이 없으므로 false반환
 			return false;
-		int j = n - 1;// arr[i-1]보다 큰 수 중에
-		while (arr[j] <= arr[i - 1]) // arr[i] ~ arr[n] 중 arr[i-1]보다 큰 수 중 j값이 제일 높은 수 찾기
+		int j = n - 1;// i - 1 와 바꿀 위치
+		while (arr[j] <= arr[i - 1]) // arr[i] ~ arr[n] 중 arr[i-1]보다 큰 수 중 제일 높은 j 값 찾기
 			j -= 1;
 		swap(i - 1, j);// arr[i-1] 과 arr[j]를 바꿔줌
 		j = n - 1;
