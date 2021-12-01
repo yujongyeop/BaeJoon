@@ -12,27 +12,27 @@ public class leave {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 		int N = Integer.parseInt(br.readLine());
-		int[][] input = new int[N + 1][2];
+		int[] time = new int[N + 1];
+		int[] price = new int[N + 1];
 		int[] DP = new int[N + 1];
 		for (int i = 1; i <= N; i++) {
 			String[] userInput = br.readLine().split(" ");
-			input[i][0] = Integer.parseInt(userInput[0]);
-			input[i][1] = Integer.parseInt(userInput[1]);
-			DP[i] = input[i][1];
+			time[i] = Integer.parseInt(userInput[0]);
+			price[i] = Integer.parseInt(userInput[1]);
+			DP[i] = price[i];
 		}
 
 		for (int i = 2; i <= N; i++) {
 			for (int j = 1; j < i; j++) {
-				if (i - j >= input[j][0]) {
-					DP[i] = Math.max(input[i][1] + DP[j], DP[j]);
+				if (i - j >= time[j]) {
+					DP[i] = Math.max(price[i] + DP[j], DP[i]);
 				}
 			}
 		}
 		int ans = 0;
 		for (int i = 1; i <= N; i++) {
-			if (i + input[i][0] <= N + 1) {
-				if (ans < DP[i])
-					ans = DP[i];
+			if (i + time[i] <= N + 1) {
+				ans = Math.max(ans, DP[i]);
 			}
 		}
 
