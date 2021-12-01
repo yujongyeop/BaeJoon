@@ -1,6 +1,6 @@
 package Algorithm_Basic2;
 
-//https://www.acmicpc.net/problem/15661
+//https://www.acmicpc.net/problem/14889
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -16,7 +16,7 @@ public class Start_and_Link {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 		N = Integer.parseInt(br.readLine());// 참가자 명수
-		team_Depth = 1; // 팀 구성 명수
+		team_Depth = N / 2; // 팀 구성 명수
 		input = new int[N][N];// 팀원 간 능력치 배열
 		visit = new boolean[N];// 방문 여부 배열
 		ans = Integer.MAX_VALUE;// 정답 저장 변수
@@ -26,9 +26,8 @@ public class Start_and_Link {
 			for (int j = 0; j < N; j++)
 				input[i][j] = Integer.parseInt(userInput[j]);
 		}
-
-		for (; team_Depth < N; team_Depth++)// 깊이가 1~N-1일 때의 경우를 모두 탐색
-			dfs(0, 0);
+		
+		dfs(0, 0);
 
 		bw.write(ans + "");// 정답 출력
 		bw.flush();
