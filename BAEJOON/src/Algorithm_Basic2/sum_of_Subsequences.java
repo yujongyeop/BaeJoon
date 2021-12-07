@@ -8,44 +8,36 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 
 public class sum_of_Subsequences {
-	static int N, S, d;
-	static int count = 0;
-	static int[] arr;
-	static boolean[] visit;
 
 	public static void main(String[] args) throws IOException {
+		int N;
+		int S;
+		int[] arr = new int[21];
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 		String[] input = br.readLine().split(" ");
 		N = Integer.parseInt(input[0]);
 		S = Integer.parseInt(input[1]);
-		arr = new int[N];
-		visit = new boolean[N];
 		input = br.readLine().split(" ");
 		for (int i = 0; i < N; i++)
 			arr[i] = Integer.parseInt(input[i]);
-		for (d = 1; d <= N; d++)// 1~N개의 숫자를 조합
-			dfs(0, 0, 0);
-		bw.write(count + "");
+		int answer = 0;
+		for (int mask = 1; mask < (1 << N); mask++) {
+			int sum = 0;
+			for (int i = 0; i < N; i++) {
+				if ((mask & (1 << i)) != 0) {
+					sum += arr[i];
+				}
+			}
+			if (sum == S) {
+				answer++;
+			}
+		}
+		bw.write(answer + "");
 		bw.flush();
 		bw.close();
 		br.close();
+
 	}
 
-	static void dfs(int start, int depth, int sum) {
-		if (depth == d) {
-			if (sum == S)
-				count++;
-			return;
-		}
-		for (int i = start; i < N; i++) {
-			if (visit[i])
-				continue;
-			visit[i] = true;
-			sum += arr[i];
-			dfs(i + 1, depth + 1, sum);
-			sum -= arr[i];
-			visit[i] = false;
-		}
-	}
 }
